@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking - MITA Airlines</title>
+    <link rel="stylesheet" href="stylemita.css">
+</head>
+
+<body>
+    <!-- Main Container for 3D flipping effect -->
+    <div class="flip-container" id="flip-card">
+        <div class="flipper">
+            <!-- Front of the card (MITA Airlines) -->
+            <div class="front">
+                <div class="back-content">
+                    <h1>MITA Airlines!</h1>
+                </div>
+            </div>
+
+            <!-- Back of the card (Flight Booking Form) -->
+            <div class="back">
+                <div class="container">
+                    <h1>Book Your Flight</h1>
+                    <form class="flight-form">
+
+                        <!-- Trip type -->
+                        <div class="trip-type">
+                            <label><input type="radio" name="trip" value="one-way" checked> One Way</label>
+                            <label><input type="radio" name="trip" value="round-trip"> Round Trip</label>
+                            <label><input type="radio" name="trip" value="multi-city"> Multi City</label>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="location">
+                            <label for="from-location">From:</label>
+                            <input type="text" id="from-location" placeholder="Enter departure city">
+                            <label for="to-location">To:</label>
+                            <input type="text" id="to-location" placeholder="Enter destination city">
+                        </div>
+
+                        <!-- Dates -->
+                        <div class="dates">
+                            <label for="departure-date">Departure Date:</label>
+                            <input type="date" id="departure-date">
+                            <label for="return-date">Return Date:</label>
+                            <input type="date" id="return-date">
+                        </div>
+
+                        <!-- No. of passengers -->
+                        <div class="passengers">
+                            <label for="passengers">Passengers:</label>
+                            <input type="number" id="passengers" min="1" value="1">
+                        </div>
+
+                        <!-- Submit btn -->
+                        <button type="submit" class="submit-btn">Search Flights</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="mitascrip.js"></script>
+</body>
+
+</html>
