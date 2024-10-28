@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flight Booking @ MITA </title>
-    <link rel="stylesheet" href="mitastyle.css">
+    <link rel="stylesheet" href="/mitastyle.css">
+
 </head>
 
 <body>
@@ -233,7 +234,10 @@
                 <p>&copy; 2024 MITA Airlines | All rights reserved</p>
             </footer>
 
-            <script src="script.js"></script>
+            <script src="/mitascript.js"></script>
+
 </body>
 
 </html>
+</ul>
+</nav>
