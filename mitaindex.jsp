@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flight Booking @ MITA </title>
-    <link rel="stylesheet" href="mitastyle.css">
+    <link rel="stylesheet" href="/mitastyle.css">
+
 </head>
 
 <body>
@@ -129,74 +130,114 @@
             <button class="filter-btn">Apply Filters</button>
         </aside>
 
-        <!--Flight select-->
-
-        <section class="flight-options">
+        <!-- Flight Selection List -->
+        <div class="flight-selection-list">
             <div class="flight-option">
-                <h2>Flight 101</h2>
-                <p>Departure: 8:00 AM - Arrival: 12:00 PM</p>
-                <p>Price: $200</p>
-                <button onclick="selectFlight('Flight 101')">Select</button>
+                <h3>Flight Option 1</h3>
+                <p>From: LAX - Los Angeles</p>
+                <p>To: AMD - Ahmedabad</p>
+                <p>Departure: October 13, 2024</p>
+                <p>Return: October 30, 2024</p>
+                <button class="book-now-btn" data-from="LAX - Los Angeles" data-to="AMD - Ahmedabad"
+                    data-departure="October 13, 2024" data-return="October 30, 2024" data-class="Economy">Book
+                    Now</button>
             </div>
-            <div class="flight-option">
-                <h2>Flight 102</h2>
-                <p>Departure: 2:00 PM - Arrival: 6:00 PM</p>
-                <p>Price: $250</p>
-                <button onclick="selectFlight('Flight 102')">Select</button>
+            <!-- Add more flight options here -->
+            <div class="flight-selection-list">
+                <div class="flight-option">
+                    <h3>Flight Option 1</h3>
+                    <p>From: LAX - Los Angeles</p>
+                    <p>To: JFK - New York</p>
+                    <p>Departure: October 13, 2024</p>
+                    <p>Return: October 30, 2024</p>
+                    <button class="book-now-btn" data-from="LAX - Los Angeles" data-to="AMD - Ahmedabad"
+                        data-departure="October 13, 2024" data-return="October 30, 2024" data-class="Economy">Book
+                        Now</button>
+                </div>
             </div>
-            <!-- Add more flight options as needed -->
-        </section>
+
+            <!-- Trip Details Card -->
+            <div class="trip-details-card" style="display: none;">
+                <h2>Trip Details</h2>
+                <div class="trip-info">
+                    <div class="trip-info-item">
+                        <span>From:</span>
+                        <strong id="trip-from"></strong>
+                    </div>
+                    <div class="trip-info-item">
+                        <span>To:</span>
+                        <strong id="trip-to"></strong>
+                    </div>
+                    <div class="trip-info-item">
+                        <span>Departing:</span>
+                        <strong id="trip-departure"></strong>
+                    </div>
+                    <div class="trip-info-item">
+                        <span>Returning:</span>
+                        <strong id="trip-return"></strong>
+                    </div>
+                    <div class="trip-info-item">
+                        <span>Class:</span>
+                        <strong id="trip-class"></strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Passenger Details Section -->
+            <div id="passenger-details" class="container passenger-details" style="display: none;">
+                <h2>Who's Travelling?</h2>
+                <form class="passenger-form">
+                    <!-- Passenger 1 -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label for="passenger-name">Passenger Name:</label>
+                            <input type="text" id="passenger-name" placeholder="Enter full name">
+                        </div>
+                        <div class="input-group">
+                            <label for="passenger-dob">Date of Birth:</label>
+                            <input type="date" id="passenger-dob">
+                        </div>
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label for="gender">Gender:</label>
+                            <select id="gender">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label for="email">Email Address:</label>
+                            <input type="email" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="input-group">
+                            <label for="phone">Phone Number:</label>
+                            <input type="tel" id="phone" placeholder="Enter your phone number">
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn">Proceed to Payment</button>
+                </form>
+            </div>
 
 
-        <!-- Trip Details Card -->
+            <!-- Footer -->
+            <footer>
+                <p>&copy; 2024 MITA Airlines | All rights reserved</p>
+            </footer>
 
-        <section class="passenger-form">
-            <h2>Selected Flight: <span id="selectedFlight"></span></h2>
-            <form id="passengerForm">
-                <label for="name">Full Name:</label>
-                <input type="text" id="name" required>
+            <script src="/mitascript.js"></script>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" required>
-
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" required>
-
-                <button type="submit">Proceed to Payment</button>
-            </form>
-        </section>
-
-
-        <!-- Submit Button -->
-        <button type="submit" class="submit-btn">Proceed to Payment</button>
-        </form>
-    </div>
-
-    <!--PAYMENT-->
-    <section class="payment-form">
-        <h2>Payment Details for <span id="selectedFlight"></span></h2>
-        <p>Passenger Name: <span id="passengerName"></span></p>
-
-        <form id="paymentForm">
-            <label for="cardNumber">Card Number:</label>
-            <input type="text" id="cardNumber" required>
-
-            <label for="expiryDate">Expiry Date:</label>
-            <input type="text" id="expiryDate" placeholder="MM/YY" required>
-
-            <label for="cvv">CVV:</label>
-            <input type="password" id="cvv" required>
-
-            <button type="submit">Confirm Payment</button>
-        </form>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 MITA Airlines | All rights reserved</p>
-    </footer>
-
-    <script src="mitascrip.js"></script>
 </body>
 
 </html>
+</ul>
+</nav>

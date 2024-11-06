@@ -93,6 +93,51 @@ document.addEventListener("DOMContentLoaded", function () {
         flightList.style.display = "block"; // Show flight list
     });
 
+
+    function selectFlight(flight) {
+        // Store selected flight in local storage to access it on other pages
+        localStorage.setItem('selectedFlight', flight);
+        // Redirect to Passenger Details page
+        window.location.href = 'passenger-details.html';
+    }
+
+    // Display selected flight from local storage
+    document.getElementById('selectedFlight').textContent = localStorage.getItem('selectedFlight');
+
+    // Handle form submission
+    document.getElementById('passengerForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent form submission
+
+        const passengerDetails = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value
+        };
+
+        // Save passenger details to local storage
+        localStorage.setItem('passengerDetails', JSON.stringify(passengerDetails));
+
+        // Redirect to Payment page
+        window.location.href = 'payment.html';
+    });
+
+    // Display selected flight and passenger name from local storage
+    document.getElementById('selectedFlight').textContent = localStorage.getItem('selectedFlight');
+    const passengerDetails = JSON.parse(localStorage.getItem('passengerDetails'));
+    document.getElementById('passengerName').textContent = passengerDetails.name;
+
+    // Handle payment form submission
+    document.getElementById('paymentForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent form submission
+
+        alert('Payment successful! Thank you for booking with MITA.');
+        // Clear local storage after booking confirmation
+        localStorage.clear();
+        // Redirect to a confirmation page or back to the home page
+        window.location.href = 'confirmation.html';
+    });
+
+
     // Event listener for Book Now button clicks
     bookNowButtons.forEach(function (button) {
         button.addEventListener("click", function () {
