@@ -17,10 +17,10 @@ public class Passenger {
 
     @GeneratedValue(
             strategy= GenerationType.SEQUENCE,
-            generator = "student_sequence"
+            generator = "passenger_sequence"
     )
-    private int ID;
-    private int UserID; // relates passenger to account
+    private Integer ID;
+    private Integer UserID; // relates passenger to account
     private String fName;
     private String lName;
     private int contactNum;
