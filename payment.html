@@ -6,206 +6,203 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flight Booking @ MITA</title>
     <link rel="stylesheet" href="mitastyle.css">
+    <style>
+        /* Paymenttt */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #004d1f;
+            color: white;
+            padding: 25px;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 15px;
+            margin-right: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Payment Form Section */
+        .payment-form {
+            width: 100%;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-form h2 {
+            font-size: 1.8rem;
+            color: #28a745;
+            /* MITA Green */
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-form p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #28a745;
+        }
+
+        .submit-btn {
+            padding: 0.75rem;
+            font-size: 1.2rem;
+            color: #fff;
+            background-color: #28a745;
+            border: none;
+            border-radius: 4px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 8px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            margin: 10px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            border-radius: 4px;
+        }
+
+        .modal-button:hover {
+            background-color: #218838;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* submitbtn */
+        @media (max-width: 768px) {
+            .payment-form {
+                padding: 1rem;
+            }
+
+            .form-group input {
+                font-size: 1rem;
+            }
+
+            .submit-btn {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-
-    /* Navigation Bar */
-    .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #004d1f;
-        /* MITA Green */
-        color: white;
-        padding: 25px;
-    }
-
-    .navbar .logo {
-        font-size: 24px;
-        font-weight: bold;
-    }
-
-    .nav-links {
-        list-style: none;
-        display: flex;
-    }
-
-    .nav-links li {
-        margin-left: 15px;
-        margin-right: 25px;
-    }
-
-    .nav-links a {
-        color: white;
-        text-decoration: none;
-        font-size: 20px;
-    }
-
-    .nav-links a:hover {
-        text-decoration: underline;
-    }
-
-    /* Intro Section */
-    .intro {
-        position: relative;
-        height: 400px;
-        background: url('bg.png') no-repeat center center/cover;
-        /* Ensure bg.png is in the same directory */
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-    }
-
-    .intro-content {
-        background-color: rgba(18, 64, 5, 0.5);
-        /* Dark transparent green */
-        color: white;
-        padding: 20px;
-        text-align: center;
-        width: 100%;
-        max-width: 1200px;
-        box-sizing: border-box;
-    }
-
-    .intro h1 {
-        font-size: 36px;
-        margin: 0;
-        padding-bottom: 10px;
-    }
-
-    .intro p {
-        font-size: 18px;
-    }
-
-    /* Flight Booking Section */
-    .container {
-        background-color: white;
-        padding: 50px;
-        border-radius: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        margin: 20px auto;
-        max-width: 2400px;
-        width: 100%;
-    }
-
-    .booking-tabs {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 20px;
-    }
-
-    /* Tabs styling */
-    .main-tabs,
-    .booking-tabs {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
-    }
-
-    .tab {
-        background-color: #ccc;
-        padding: 10px 20px;
-        margin: 0 5px;
-        cursor: pointer;
-        border: none;
-        border-radius: 5px;
-    }
-
-    .tab.active {
-        background-color: #28a745;
-        /* MITA Green */
-        color: white;
-    }
-
-    .form-section {
-        display: none;
-    }
-
-    .form-section.active {
-        display: block;
-    }
-
-    /* Input group styling */
-    .input-group {
-        margin-bottom: 15px;
-    }
-
-    .input-group label {
-        display: block;
-        margin-bottom: 5px;
-    }
-
-    .input-group input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-
-    /* search button */
-    .search-btn {
-        background-color: #28a745;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        width: 100%;
-    }
-
-    .search-btn:hover {
-        background-color: #218838;
-    }
-
-    /* Filter Group */
-    .filter-group {
-        margin-bottom: 15px;
-    }
-
-    .filter-group label {
-        display: block;
-        font-size: 16px;
-        margin-bottom: 5px;
-        color: #333;
-    }
-
-    .filter-group input,
-    .filter-group select {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-    }
-
-    .filter-btn {
-        background-color: #28a745;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        width: 100%;
-    }
-
-    .filter-btn:hover {
-        background-color: #218838;
-    }
-</style>
 
 <body>
     <!-- Navigation Bar -->
@@ -218,186 +215,91 @@
         </ul>
     </nav>
 
-    <!-- Intro Section -->
-    <section class="intro">
-        <div class="intro-content">
-            <h1>Welcome to MITA</h1>
-            <p>Book your dream flight</p>
-        </div>
+    <!-- PAYMENT SECTION -->
+    <section class="payment-form">
+        <h2>Payment Method</h2>
+        <p><strong>Selected Flight:</strong> <span id="selected-flight"></span></p>
+        <form id="paymentForm" onsubmit="confirmBooking(event)">
+            <div class="form-group">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" placeholder="Enter card number" maxlength="16" pattern="\d{16}"
+                    title="Card number must be 16 digits" required>
+            </div>
+            <div class="form-group">
+                <label for="expiryDate">Expiry Date</label>
+                <input type="month" id="expiryDate" required>
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" placeholder="Enter CVV" pattern="\d{3}" title="CVV must be 3 digits"
+                    required>
+            </div>
+            <button type="submit" class="submit-btn">Confirm Booking</button>
+        </form>
     </section>
 
-    <!-- Book/Check-in Tabs -->
-    <div class="container">
-        <div class="main-tabs">
-            <button id="flight-tab" class="tab active">Flight</button>
-            <button id="checkin-tab" class="tab">Check-in</button>
+    <!-- Modal for Booking Confirmation -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modalMessage"></p>
+            <button class="modal-button" onclick="closeModal()">Okay</button>
         </div>
+    </div>
 
-        <!-- Flight Booking Section -->
-        <div id="flight-form-section" class="form-section">
-            <div class="booking-tabs">
-                <button id="one-way-tab" class="tab active">One Way</button>
-                <button id="round-trip-tab" class="tab">Return</button>
-                <button id="multi-city-tab" class="tab">Multi City</button>
-            </div>
+    <footer>
+        <p>&copy; 2024 MITA Airlines | All rights reserved</p>
+    </footer>
 
-            <form class="flight-form" id="flightForm">
-                <!-- Trip type forms -->
-                <div class="form-group">
-                    <div class="input-group">
-                        <label for="from-location">From:</label>
-                        <input type="text" id="from-location" placeholder="Enter departure city" required>
-                    </div>
-                    <div class="input-group">
-                        <label for="to-location">To:</label>
-                        <input type="text" id="to-location" placeholder="Enter destination city" required>
-                    </div>
-                </div>
+    <script>
+        // Function to retrieve query parameters from the URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
 
-                <!-- Date Fields (One-Way/Return) -->
-                <div class="form-group">
-                    <div class="input-group">
-                        <label for="departure-date">Departure Date:</label>
-                        <input type="date" id="departure-date" required>
-                    </div>
-                    <div class="input-group return-group">
-                        <label for="return-date">Return Date:</label>
-                        <input type="date" id="return-date">
-                    </div>
-                </div>
+        // Display the selected flight on the payment page
+        document.getElementById("selected-flight").textContent = getQueryParam("flight") || "Not selected";
 
-                <!-- Passengers -->
-                <div class="form-group">
-                    <div class="input-group">
-                        <label for="passengers">Passengers:</label>
-                        <input type="number" id="passengers" min="1" value="1" required>
-                    </div>
-                </div>
+        // Show modal with booking confirmation
+        function confirmBooking(event) {
+            event.preventDefault(); // Prevent form from submitting normally
 
-                <!-- Submit Button -->
-                <div id="search-flight-section">
-                    <button type="button" class="search-btn" onclick="searchFlights()">Search Flights</button>
-                </div>
-            </form>
-        </div>
+            // Get the flight information
+            const selectedFlight = getQueryParam("flight") || "Not selected";
 
-        <!-- Footer -->
-        <footer>
-            <p>&copy; 2024 MITA Airlines | All rights reserved</p>
-        </footer>
+            //  card number length
+            const cardNumber = document.getElementById("cardNumber").value;
+            if (cardNumber.length !== 16) {
+                alert("Card number must be exactly 16 digits.");
+                return;
+            }
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                // Variables for sections and buttons
-                const flightTab = document.getElementById("flight-tab");
-                const checkinTab = document.getElementById("checkin-tab");
-                const flightFormSection = document.getElementById("flight-form-section");
-                const checkinFormSection = document.getElementById("checkin-form-section");
-                const oneWayTab = document.getElementById("one-way-tab");
-                const roundTripTab = document.getElementById("round-trip-tab");
-                const multiCityTab = document.getElementById("multi-city-tab");
-                const returnDateGroup = document.querySelector(".return-group");
-                const flightDetailsSection = document.getElementById('flight-selection-section');
-                const passengerDetailsSection = document.getElementById('passenger-details-section');
-                const flightSelectionBtns = document.querySelectorAll('.flight-option button');
+            //  expiry date 
+            const expiryDate = document.getElementById("expiryDate").value;
+            if (!expiryDate) {
+                alert("Please select a valid expiry date.");
+                return;
+            }
 
-                // Book/Check-in tab switching
-                function activateMainTab(selectedTab) {
-                    flightTab.classList.remove("active");
-                    checkinTab.classList.remove("active");
+            // Set the modal message & show the modal
+            document.getElementById("modalMessage").textContent = `Booking confirmed for ${selectedFlight}! Your payment was successful.`;
+            document.getElementById("bookingModal").style.display = "block";
+        }
 
-                    selectedTab.classList.add("active");
+        // Close the modal when clicked close button
+        function closeModal() {
+            document.getElementById("bookingModal").style.display = "none";
+        }
 
-                    if (selectedTab === flightTab) {
-                        flightFormSection.style.display = "block";
-                        checkinFormSection.style.display = "none";
-                    } else {
-                        flightFormSection.style.display = "none";
-                        checkinFormSection.style.display = "block";
-                    }
-                }
-
-                flightTab.addEventListener("click", function () {
-                    activateMainTab(flightTab);
-                });
-
-                checkinTab.addEventListener("click", function () {
-                    activateMainTab(checkinTab);
-                });
-
-                // trip type tab switching
-                function activateFlightTab(selectedTab) {
-                    oneWayTab.classList.remove("active");
-                    roundTripTab.classList.remove("active");
-                    multiCityTab.classList.remove("active");
-
-                    selectedTab.classList.add("active");
-
-                    if (selectedTab === roundTripTab) {
-                        returnDateGroup.style.display = "block";
-                    } else {
-                        returnDateGroup.style.display = "none";
-                    }
-                }
-
-                oneWayTab.addEventListener("click", function () {
-                    activateFlightTab(oneWayTab);
-                });
-
-                roundTripTab.addEventListener("click", function () {
-                    activateFlightTab(roundTripTab);
-                });
-
-                multiCityTab.addEventListener("click", function () {
-                    activateFlightTab(multiCityTab);
-                });
-
-                // Handle form submission for search flights
-                const searchButton = document.querySelector('.search-btn');
-                searchButton.addEventListener("click", function (event) {
-                    event.preventDefault(); // Prevent page reload on form submission
-
-                    searchFlights();
-                });
-
-                function searchFlights() {
-                    // Get values from the form
-                    var fromLocation = document.getElementById('from-location').value;
-                    var toLocation = document.getElementById('to-location').value;
-                    var departureDate = document.getElementById('departure-date').value;
-                    var returnDate = document.getElementById('return-date').value;
-                    var passengers = document.getElementById('passengers').value;
-
-                    // Construct the URL with query parameters
-                    var url = 'flightoption.html?from=' + encodeURIComponent(fromLocation) +
-                        '&to=' + encodeURIComponent(toLocation) +
-                        '&departure=' + encodeURIComponent(departureDate) +
-                        '&return=' + encodeURIComponent(returnDate) +
-                        '&passengers=' + encodeURIComponent(passengers);
-
-                    // Redirect to the flightoption page
-                    window.location.href = url;
-                }
-
-                // Handle flight selection
-                flightSelectionBtns.forEach(button => {
-                    button.addEventListener("click", function () {
-                        // Hide the flight details section and show the passenger details form
-                        flightDetailsSection.style.display = 'none';
-                        passengerDetailsSection.style.display = 'block';
-                    });
-                });
-
-                //  Handle passenger form submission 
-                const passengerForm = document.getElementById('passengerForm');
-                passengerForm.addEventListener("submit", function (event) {
-                    event.preventDefault(); // Prevent page reload
-
-                    //  display a confirmation
-                    console.log("Passenger details submitted");
-                });
-            }); 
-        </script>
+        // Close the modal when clicked outside of the modal
+        window.onclick = function (event) {
+            const modal = document.getElementById("bookingModal");
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 
 </html>
