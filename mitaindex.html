@@ -4,9 +4,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flight Booking @ MITA </title>
+    <title>Flight Booking @ MITA</title>
     <link rel="stylesheet" href="mitastyle.css">
 </head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #004d1f;
+        color: white;
+        padding: 25px;
+    }
+
+    .navbar .logo {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+    }
+
+    .nav-links li {
+        margin-left: 15px;
+        margin-right: 25px;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+    }
+
+    .nav-links a:hover {
+        text-decoration: underline;
+    }
+
+    /* Intro Section */
+    .intro {
+        position: relative;
+        height: 400px;
+        background: url('bg.png') no-repeat center center/cover;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    .intro-content {
+        background-color: rgba(18, 64, 5, 0.5);
+        color: white;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
+        max-width: 1200px;
+        box-sizing: border-box;
+    }
+
+    .intro h1 {
+        font-size: 36px;
+        margin: 0;
+        padding-bottom: 10px;
+    }
+
+    .intro p {
+        font-size: 18px;
+    }
+
+    /* Flight Booking Section */
+    .container {
+        background-color: white;
+        padding: 50px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        max-width: 2400px;
+        width: 100%;
+    }
+
+    .booking-tabs {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    /* Tabs styling */
+    .main-tabs,
+    .booking-tabs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .tab {
+        background-color: #ccc;
+        padding: 10px 20px;
+        margin: 0 5px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+    }
+
+    .tab.active {
+        background-color: #28a745;
+        /* MITA Green */
+        color: white;
+    }
+
+    .form-section {
+        display: none;
+    }
+
+    .form-section.active {
+        display: block;
+    }
+
+    /* Input group styling */
+    .input-group {
+        margin-bottom: 15px;
+    }
+
+    .input-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    /* search button */
+    .search-btn {
+        background-color: #28a745;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .search-btn:hover {
+        background-color: #218838;
+    }
+
+    /* Filter Group */
+    .filter-group {
+        margin-bottom: 15px;
+    }
+
+    .filter-group label {
+        display: block;
+        font-size: 16px;
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    .filter-group input,
+    .filter-group select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .filter-btn {
+        background-color: #28a745;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .filter-btn:hover {
+        background-color: #218838;
+    }
+</style>
 
 <body>
     <!-- Navigation Bar -->
@@ -19,7 +215,7 @@
         </ul>
     </nav>
 
-    <!-- intro Section -->
+    <!-- Intro Section -->
     <section class="intro">
         <div class="intro-content">
             <h1>Welcome to MITA</h1>
@@ -42,16 +238,16 @@
                 <button id="multi-city-tab" class="tab">Multi City</button>
             </div>
 
-            <form class="flight-form">
+            <form class="flight-form" id="flightForm">
                 <!-- Trip type forms -->
                 <div class="form-group">
                     <div class="input-group">
                         <label for="from-location">From:</label>
-                        <input type="text" id="from-location" placeholder="Enter departure city">
+                        <input type="text" id="from-location" placeholder="Enter departure city" required>
                     </div>
                     <div class="input-group">
                         <label for="to-location">To:</label>
-                        <input type="text" id="to-location" placeholder="Enter destination city">
+                        <input type="text" id="to-location" placeholder="Enter destination city" required>
                     </div>
                 </div>
 
@@ -59,7 +255,7 @@
                 <div class="form-group">
                     <div class="input-group">
                         <label for="departure-date">Departure Date:</label>
-                        <input type="date" id="departure-date">
+                        <input type="date" id="departure-date" required>
                     </div>
                     <div class="input-group return-group">
                         <label for="return-date">Return Date:</label>
@@ -71,132 +267,134 @@
                 <div class="form-group">
                     <div class="input-group">
                         <label for="passengers">Passengers:</label>
-                        <input type="number" id="passengers" min="1" value="1">
+                        <input type="number" id="passengers" min="1" value="1" required>
                     </div>
                 </div>
 
                 <!-- Submit Button -->
-                <button type="submit" class="submit-btn">Search Flights</button>
+                <div id="search-flight-section">
+                    <button type="button" class="search-btn" onclick="searchFlights()">Search Flights</button>
+                </div>
             </form>
         </div>
 
-        <!-- Check-in Section -->
-        <div id="checkin-form-section" class="form-section" style="display:none;">
-            <h2>Check-in</h2>
-            <form class="checkin-form">
-                <!-- Booking reference or e-ticket -->
-                <div class="form-group">
-                    <div class="input-group">
-                        <label for="booking-reference">Booking Reference / E-ticket number:</label>
-                        <input type="text" id="booking-reference" placeholder="Enter booking reference or e-ticket">
-                    </div>
-                </div>
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2024 MITA Airlines | All rights reserved</p>
+        </footer>
 
-                <!-- Last name -->
-                <div class="form-group">
-                    <div class="input-group">
-                        <label for="last-name">Last Name:</label>
-                        <input type="text" id="last-name" placeholder="Enter your last name">
-                    </div>
-                </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Variables for sections and buttons
+                const flightTab = document.getElementById("flight-tab");
+                const checkinTab = document.getElementById("checkin-tab");
+                const flightFormSection = document.getElementById("flight-form-section");
+                const checkinFormSection = document.getElementById("checkin-form-section");
+                const oneWayTab = document.getElementById("one-way-tab");
+                const roundTripTab = document.getElementById("round-trip-tab");
+                const multiCityTab = document.getElementById("multi-city-tab");
+                const returnDateGroup = document.querySelector(".return-group");
+                const flightDetailsSection = document.getElementById('flight-selection-section');
+                const passengerDetailsSection = document.getElementById('passenger-details-section');
+                const flightSelectionBtns = document.querySelectorAll('.flight-option button');
 
-                <!-- Submit Button -->
-                <button type="submit" class="submit-btn">Check-in</button>
-            </form>
-        </div>
-    </div>
+                // Book/Check-in tab switching
+                function activateMainTab(selectedTab) {
+                    flightTab.classList.remove("active");
+                    checkinTab.classList.remove("active");
 
-    <div class="container">
+                    selectedTab.classList.add("active");
 
-        <!-- Sidebar for filtering options -->
+                    if (selectedTab === flightTab) {
+                        flightFormSection.style.display = "block";
+                        checkinFormSection.style.display = "none";
+                    } else {
+                        flightFormSection.style.display = "none";
+                        checkinFormSection.style.display = "block";
+                    }
+                }
 
-        <aside id="sidebar" class="sidebar" style="display: none;">
-            <h2>Filter Flights</h2>
-            <div class="filter-group">
-                <label for="price-range">Price Range</label>
-                <input type="range" id="price-range" name="price-range" min="100" max="2000">
-            </div>
-            <div class="filter-group">
-                <label for="airline">Airlines</label>
-                <select id="airline" name="airline">
-                    <option value="any">Southwest Airlines</option>
-                    <option value="delta">Delta Airlines</option>
-                    <option value="american">American Airlines</option>
-                    <option value="spirit">Spirit Airways</option>
-                    <option value="spirit">Any</option>
-                </select>
-            </div>
-            <button class="filter-btn">Apply Filters</button>
-        </aside>
+                flightTab.addEventListener("click", function () {
+                    activateMainTab(flightTab);
+                });
 
-        <!--Flight select-->
+                checkinTab.addEventListener("click", function () {
+                    activateMainTab(checkinTab);
+                });
 
-        <section class="flight-options">
-            <div class="flight-option">
-                <h2>Flight 101</h2>
-                <p>Departure: 8:00 AM - Arrival: 12:00 PM</p>
-                <p>Price: $200</p>
-                <button onclick="selectFlight('Flight 101')">Select</button>
-            </div>
-            <div class="flight-option">
-                <h2>Flight 102</h2>
-                <p>Departure: 2:00 PM - Arrival: 6:00 PM</p>
-                <p>Price: $250</p>
-                <button onclick="selectFlight('Flight 102')">Select</button>
-            </div>
-            <!-- Add more flight options as needed -->
-        </section>
+                // trip type tab switching
+                function activateFlightTab(selectedTab) {
+                    oneWayTab.classList.remove("active");
+                    roundTripTab.classList.remove("active");
+                    multiCityTab.classList.remove("active");
 
+                    selectedTab.classList.add("active");
 
-        <!-- Trip Details Card -->
+                    if (selectedTab === roundTripTab) {
+                        returnDateGroup.style.display = "block";
+                    } else {
+                        returnDateGroup.style.display = "none";
+                    }
+                }
 
-        <section class="passenger-form">
-            <h2>Selected Flight: <span id="selectedFlight"></span></h2>
-            <form id="passengerForm">
-                <label for="name">Full Name:</label>
-                <input type="text" id="name" required>
+                oneWayTab.addEventListener("click", function () {
+                    activateFlightTab(oneWayTab);
+                });
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" required>
+                roundTripTab.addEventListener("click", function () {
+                    activateFlightTab(roundTripTab);
+                });
 
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" required>
+                multiCityTab.addEventListener("click", function () {
+                    activateFlightTab(multiCityTab);
+                });
 
-                <button type="submit">Proceed to Payment</button>
-            </form>
-        </section>
+                // Handle form submission for search flights
+                const searchButton = document.querySelector('.search-btn');
+                searchButton.addEventListener("click", function (event) {
+                    event.preventDefault(); // Prevent page reload on form submission
 
+                    searchFlights();
+                });
 
-        <!-- Submit Button -->
-        <button type="submit" class="submit-btn">Proceed to Payment</button>
-        </form>
-    </div>
+                function searchFlights() {
+                    // Get values from the form
+                    var fromLocation = document.getElementById('from-location').value;
+                    var toLocation = document.getElementById('to-location').value;
+                    var departureDate = document.getElementById('departure-date').value;
+                    var returnDate = document.getElementById('return-date').value;
+                    var passengers = document.getElementById('passengers').value;
 
-    <!--PAYMENT-->
-    <section class="payment-form">
-        <h2>Payment Details for <span id="selectedFlight"></span></h2>
-        <p>Passenger Name: <span id="passengerName"></span></p>
+                    // Construct the URL with query parameters
+                    var url = 'flightoption.html?from=' + encodeURIComponent(fromLocation) +
+                        '&to=' + encodeURIComponent(toLocation) +
+                        '&departure=' + encodeURIComponent(departureDate) +
+                        '&return=' + encodeURIComponent(returnDate) +
+                        '&passengers=' + encodeURIComponent(passengers);
 
-        <form id="paymentForm">
-            <label for="cardNumber">Card Number:</label>
-            <input type="text" id="cardNumber" required>
+                    // Redirect to the flightoption page
+                    window.location.href = url;
+                }
 
-            <label for="expiryDate">Expiry Date:</label>
-            <input type="text" id="expiryDate" placeholder="MM/YY" required>
+                // Handle flight selection
+                flightSelectionBtns.forEach(button => {
+                    button.addEventListener("click", function () {
+                        // Hide the flight details section and show the passenger details form
+                        flightDetailsSection.style.display = 'none';
+                        passengerDetailsSection.style.display = 'block';
+                    });
+                });
 
-            <label for="cvv">CVV:</label>
-            <input type="password" id="cvv" required>
+                //  Handle passenger form submission 
+                const passengerForm = document.getElementById('passengerForm');
+                passengerForm.addEventListener("submit", function (event) {
+                    event.preventDefault(); // Prevent page reload
 
-            <button type="submit">Confirm Payment</button>
-        </form>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 MITA Airlines | All rights reserved</p>
-    </footer>
-
-    <script src="mitascrip.js"></script>
+                    //  display a confirmation
+                    console.log("Passenger details submitted");
+                });
+            }); 
+        </script>
 </body>
 
 </html>
