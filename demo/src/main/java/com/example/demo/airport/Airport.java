@@ -30,6 +30,26 @@ public class Airport {
         this.timezone = timezone;
     }
 
+    public Integer getID() {
+        return ID;
+    }
+
+    public String getAirportName() {
+        return airportName;
+    }
+
+    public String getAirportCode() {
+        return airportCode;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public int getTimezone() {
+        return timezone;
+    }
+
     public void setID(Integer ID) {
         this.ID = ID;
     }

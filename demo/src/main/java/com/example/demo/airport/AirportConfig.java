@@ -25,6 +25,17 @@ public class AirportConfig {
 
            Airport DFW= new Airport(3, "Dallas Fort Worth International Airport", "DFW", "Dallas, Texas", -6);
 
+           Airport ATL= new Airport(4, "Hartsfield-Jackson Atlanta International Airport", "ATL", "Atlanta, Georgia", -6);
+
+            Airport DEN= new Airport(5, "Denver International Airport", "DEN", "Denver, Colorado", -7);
+
+            Airport DXB= new Airport(6, "Dubai International Airport", "DXB", "Garhoud, Dubai", 4);
+
+            Airport HND = new Airport(7, "Tokyo Haneda Airport", "HND", "Tokyo, Japan", 9);
+
+            Airport LHR = new Airport(8, "Heathrow Airport", "LHR", "London, England", 0);
+
+            Airport DEL = new Airport(9, "Indira Gandhi International Airport", "DEL", "Delhi, India", 5);
 
         };
 

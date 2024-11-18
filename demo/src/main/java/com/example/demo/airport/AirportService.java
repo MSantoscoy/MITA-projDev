@@ -17,22 +17,22 @@ public class AirportService {
     }
 
     // Get all passengers
-    public List<Airport> getPassenger() {
+    public List<Airport> getAirport() {
         return airportRepository.findAll();
     }
 
     // Get a passenger by ID
-    public Optional<Airport> getPassengerById(Integer id) {
+    public Optional<Airport> getAirportById(Integer id) {
         return airportRepository.findById(id);
     }
 
     // Create a new passenger
-    public Airport createPassenger(Airport airport) {
+    public Airport createAirport(Airport airport) {
         return airportRepository.save(airport);
     }
 
     // Update an existing passenger
-    public Optional<Airport> updatePassenger(Integer id, Airport airport) {
+    public Optional<Airport> updateAirport(Integer id, Airport airport) {
         if (airportRepository.existsById(id)) {
             airport.setID(id);  // Ensure the ID is set for the update
             return Optional.of(airportRepository.save(airport));
@@ -42,7 +42,7 @@ public class AirportService {
     }
 
     // Delete a passenger by ID
-    public boolean deletePassenger(Integer id) {
+    public boolean deleteAirport(Integer id) {
         if (airportRepository.existsById(id)) {
             airportRepository.deleteById(id);
             return true;
