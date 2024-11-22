@@ -21,6 +21,7 @@ public class Booking {
     int userID;
     int paymentID;
     String confirmationCode;
+    boolean isOneWay;
 
     public Booking (Integer bookingID, int userID, int paymentID, String confirmationCode){
         this.bookingID = bookingID;
@@ -60,6 +61,14 @@ public class Booking {
 
     public void setConfirmationCode(String confirmationCode) {
         this.confirmationCode = confirmationCode;
+    }
+
+    public boolean isOneWay(){
+        return isOneWay;
+    }
+
+    public void setOneWay(boolean state){
+        isOneWay = state;
     }
 
     @Override
