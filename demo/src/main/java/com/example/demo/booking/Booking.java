@@ -17,12 +17,12 @@ public class Booking {
             generator = "booking_sequence"
     )
 
-    int bookingID;
+    Integer bookingID;
     int userID;
     int paymentID;
     String confirmationCode;
 
-    public Booking (int bookingID, int userID, int paymentID, String confirmationCode){
+    public Booking (Integer bookingID, int userID, int paymentID, String confirmationCode){
         this.bookingID = bookingID;
         this.userID = userID;
         this.paymentID = paymentID;
@@ -30,7 +30,7 @@ public class Booking {
     }
 
     // Getters and Setters
-    public int getBookingID() {
+    public Integer getBookingID() {
         return bookingID;
     }
 
