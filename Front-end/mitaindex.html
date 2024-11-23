@@ -1,6 +1,7 @@
+
+<!-- Author: Astha. Date: November 15, 2024 -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,9 @@
     <link rel="stylesheet" href="mitastyle.css">
 </head>
 
+<!-- Styles section -->
 <style>
+    /* Global styles and reset for margin, padding, and box-sizing */
     * {
         margin: 0;
         padding: 0;
@@ -23,7 +26,7 @@
         min-height: 100vh;
     }
 
-    /* Navigation Bar */
+    /* Navigation bar styling */
     .navbar {
         display: flex;
         justify-content: space-between;
@@ -124,7 +127,6 @@
 
     .tab.active {
         background-color: #28a745;
-        /* MITA Green */
         color: white;
     }
 
@@ -153,7 +155,6 @@
         border-radius: 5px;
     }
 
-    /* search button */
     .search-btn {
         background-color: #28a745;
         color: white;
@@ -168,7 +169,6 @@
         background-color: #218838;
     }
 
-    /* Filter Group */
     .filter-group {
         margin-bottom: 15px;
     }
@@ -223,14 +223,14 @@
         </div>
     </section>
 
-    <!-- Book/Check-in Tabs -->
+    <!-- Flight Booking Form -->
     <div class="container">
         <div class="main-tabs">
             <button id="flight-tab" class="tab active">Flight</button>
             <button id="checkin-tab" class="tab">Check-in</button>
         </div>
 
-        <!-- Flight Booking Section -->
+        <!-- Flight Form Section -->
         <div id="flight-form-section" class="form-section">
             <div class="booking-tabs">
                 <button id="one-way-tab" class="tab active">One Way</button>
@@ -239,7 +239,7 @@
             </div>
 
             <form class="flight-form" id="flightForm">
-                <!-- Trip type forms -->
+                <!-- Form fields for trip type and travel details -->
                 <div class="form-group">
                     <div class="input-group">
                         <label for="from-location">From:</label>
@@ -251,7 +251,6 @@
                     </div>
                 </div>
 
-                <!-- Date Fields (One-Way/Return) -->
                 <div class="form-group">
                     <div class="input-group">
                         <label for="departure-date">Departure Date:</label>
@@ -263,7 +262,6 @@
                     </div>
                 </div>
 
-                <!-- Passengers -->
                 <div class="form-group">
                     <div class="input-group">
                         <label for="passengers">Passengers:</label>
@@ -271,130 +269,105 @@
                     </div>
                 </div>
 
-                <!-- Submit Button -->
+                <!-- Search Flights Button -->
                 <div id="search-flight-section">
                     <button type="button" class="search-btn" onclick="searchFlights()">Search Flights</button>
                 </div>
             </form>
         </div>
 
-        <!-- Footer -->
+        <!-- Footer Section -->
         <footer>
             <p>&copy; 2024 MITA Airlines | All rights reserved</p>
         </footer>
+    </div>
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                // Variables for sections and buttons
-                const flightTab = document.getElementById("flight-tab");
-                const checkinTab = document.getElementById("checkin-tab");
-                const flightFormSection = document.getElementById("flight-form-section");
-                const checkinFormSection = document.getElementById("checkin-form-section");
-                const oneWayTab = document.getElementById("one-way-tab");
-                const roundTripTab = document.getElementById("round-trip-tab");
-                const multiCityTab = document.getElementById("multi-city-tab");
-                const returnDateGroup = document.querySelector(".return-group");
-                const flightDetailsSection = document.getElementById('flight-selection-section');
-                const passengerDetailsSection = document.getElementById('passenger-details-section');
-                const flightSelectionBtns = document.querySelectorAll('.flight-option button');
+    <!-- JavaScript Section -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Variables for sections and buttons
+            const flightTab = document.getElementById("flight-tab");
+            const checkinTab = document.getElementById("checkin-tab");
+            const flightFormSection = document.getElementById("flight-form-section");
+            const checkinFormSection = document.getElementById("checkin-form-section");
+            const oneWayTab = document.getElementById("one-way-tab");
+            const roundTripTab = document.getElementById("round-trip-tab");
+            const multiCityTab = document.getElementById("multi-city-tab");
+            const returnDateGroup = document.querySelector(".return-group");
 
-                // Book/Check-in tab switching
-                function activateMainTab(selectedTab) {
-                    flightTab.classList.remove("active");
-                    checkinTab.classList.remove("active");
+            // Main Tab switching for 'Flight' and 'Check-in'
+            function activateMainTab(selectedTab) {
+                flightTab.classList.remove("active");
+                checkinTab.classList.remove("active");
+                selectedTab.classList.add("active");
 
-                    selectedTab.classList.add("active");
-
-                    if (selectedTab === flightTab) {
-                        flightFormSection.style.display = "block";
-                        checkinFormSection.style.display = "none";
-                    } else {
-                        flightFormSection.style.display = "none";
-                        checkinFormSection.style.display = "block";
-                    }
+                if (selectedTab === flightTab) {
+                    flightFormSection.style.display = "block";
+                    checkinFormSection.style.display = "none";
+                } else {
+                    flightFormSection.style.display = "none";
+                    checkinFormSection.style.display = "block";
                 }
+            }
 
-                flightTab.addEventListener("click", function () {
-                    activateMainTab(flightTab);
-                });
+            flightTab.addEventListener("click", function () {
+                activateMainTab(flightTab);
+            });
 
-                checkinTab.addEventListener("click", function () {
-                    activateMainTab(checkinTab);
-                });
+            checkinTab.addEventListener("click", function () {
+                activateMainTab(checkinTab);
+            });
 
-                // trip type tab switching
-                function activateFlightTab(selectedTab) {
-                    oneWayTab.classList.remove("active");
-                    roundTripTab.classList.remove("active");
-                    multiCityTab.classList.remove("active");
+            // Trip type tab switching for 'One Way', 'Return', 'Multi City'
+            function activateFlightTab(selectedTab) {
+                oneWayTab.classList.remove("active");
+                roundTripTab.classList.remove("active");
+                multiCityTab.classList.remove("active");
 
-                    selectedTab.classList.add("active");
+                selectedTab.classList.add("active");
 
-                    if (selectedTab === roundTripTab) {
-                        returnDateGroup.style.display = "block";
-                    } else {
-                        returnDateGroup.style.display = "none";
-                    }
+                if (selectedTab === roundTripTab) {
+                    returnDateGroup.style.display = "block";
+                } else {
+                    returnDateGroup.style.display = "none";
                 }
+            }
 
-                oneWayTab.addEventListener("click", function () {
-                    activateFlightTab(oneWayTab);
-                });
+            oneWayTab.addEventListener("click", function () {
+                activateFlightTab(oneWayTab);
+            });
 
-                roundTripTab.addEventListener("click", function () {
-                    activateFlightTab(roundTripTab);
-                });
+            roundTripTab.addEventListener("click", function () {
+                activateFlightTab(roundTripTab);
+            });
 
-                multiCityTab.addEventListener("click", function () {
-                    activateFlightTab(multiCityTab);
-                });
+            multiCityTab.addEventListener("click", function () {
+                activateFlightTab(multiCityTab);
+            });
 
-                // Handle form submission for search flights
-                const searchButton = document.querySelector('.search-btn');
-                searchButton.addEventListener("click", function (event) {
-                    event.preventDefault(); // Prevent page reload on form submission
+            // Handle form submission for search flights
+            const searchButton = document.querySelector('.search-btn');
+            searchButton.addEventListener("click", function (event) {
+                event.preventDefault();
+                searchFlights();
+            });
 
-                    searchFlights();
-                });
+            function searchFlights() {
+                var fromLocation = document.getElementById('from-location').value;
+                var toLocation = document.getElementById('to-location').value;
+                var departureDate = document.getElementById('departure-date').value;
+                var returnDate = document.getElementById('return-date').value;
+                var passengers = document.getElementById('passengers').value;
 
-                function searchFlights() {
-                    // Get values from the form
-                    var fromLocation = document.getElementById('from-location').value;
-                    var toLocation = document.getElementById('to-location').value;
-                    var departureDate = document.getElementById('departure-date').value;
-                    var returnDate = document.getElementById('return-date').value;
-                    var passengers = document.getElementById('passengers').value;
+                var url = 'flightoption.html?from=' + encodeURIComponent(fromLocation) +
+                          '&to=' + encodeURIComponent(toLocation) +
+                          '&departure=' + encodeURIComponent(departureDate) +
+                          '&return=' + encodeURIComponent(returnDate) +
+                          '&passengers=' + encodeURIComponent(passengers);
 
-                    // Construct the URL with query parameters
-                    var url = 'flightoption.html?from=' + encodeURIComponent(fromLocation) +
-                        '&to=' + encodeURIComponent(toLocation) +
-                        '&departure=' + encodeURIComponent(departureDate) +
-                        '&return=' + encodeURIComponent(returnDate) +
-                        '&passengers=' + encodeURIComponent(passengers);
-
-                    // Redirect to the flightoption page
-                    window.location.href = url;
-                }
-
-                // Handle flight selection
-                flightSelectionBtns.forEach(button => {
-                    button.addEventListener("click", function () {
-                        // Hide the flight details section and show the passenger details form
-                        flightDetailsSection.style.display = 'none';
-                        passengerDetailsSection.style.display = 'block';
-                    });
-                });
-
-                //  Handle passenger form submission 
-                const passengerForm = document.getElementById('passengerForm');
-                passengerForm.addEventListener("submit", function (event) {
-                    event.preventDefault(); // Prevent page reload
-
-                    //  display a confirmation
-                    console.log("Passenger details submitted");
-                });
-            }); 
-        </script>
+                window.location.href = url;
+            }
+        });
+    </script>
 </body>
-
 </html>
