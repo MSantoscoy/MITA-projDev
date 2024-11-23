@@ -1,13 +1,22 @@
+<!-- Author: Astha. Date: November 15, 2024 -->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <!-- Meta Tags for Character Encoding and Responsiveness -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Page Title -->
     <title>Flight Booking @ MITA</title>
+
+    <!-- External Stylesheet (If any) -->
     <link rel="stylesheet" href="mitastyle.css">
+
+    <!-- Internal Styles for this Page -->
     <style>
-        /* Paymenttt */
+        /* Global Styling */
         * {
             margin: 0;
             padding: 0;
@@ -22,12 +31,12 @@
             min-height: 100vh;
         }
 
-        /* Navigation Bar */
+        /* Navigation Bar Styling */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #004d1f;
+            background-color: #004d1f; /* MITA Green */
             color: white;
             padding: 25px;
         }
@@ -70,8 +79,7 @@
 
         .payment-form h2 {
             font-size: 1.8rem;
-            color: #28a745;
-            /* MITA Green */
+            color: #28a745; /* MITA Green */
             text-align: center;
             margin-bottom: 1.5rem;
         }
@@ -83,6 +91,7 @@
             text-align: center;
         }
 
+        /* Form Group Styling */
         .form-group {
             margin-bottom: 1.5rem;
         }
@@ -108,11 +117,12 @@
             border-color: #28a745;
         }
 
+        /* Submit Button Styling */
         .submit-btn {
             padding: 0.75rem;
             font-size: 1.2rem;
             color: #fff;
-            background-color: #28a745;
+            background-color: #28a745; /* MITA Green */
             border: none;
             border-radius: 4px;
             width: 100%;
@@ -124,7 +134,7 @@
             background-color: #218838;
         }
 
-        /* Modal styles */
+        /* Modal Styling (Booking Confirmation) */
         .modal {
             display: none;
             position: fixed;
@@ -176,7 +186,7 @@
             background-color: #218838;
         }
 
-        /* Footer */
+        /* Footer Styling */
         footer {
             text-align: center;
             padding: 20px;
@@ -187,7 +197,7 @@
             width: 100%;
         }
 
-        /* submitbtn */
+        /* Mobile responsiveness for smaller screens */
         @media (max-width: 768px) {
             .payment-form {
                 padding: 1rem;
@@ -205,7 +215,7 @@
 </head>
 
 <body>
-    <!-- Navigation Bar -->
+    <!-- Navigation Bar Section -->
     <nav class="navbar">
         <div class="logo">MITA</div>
         <ul class="nav-links">
@@ -215,10 +225,11 @@
         </ul>
     </nav>
 
-    <!-- PAYMENT SECTION -->
+    <!-- Payment Section for Flight Booking -->
     <section class="payment-form">
         <h2>Payment Method</h2>
         <p><strong>Selected Flight:</strong> <span id="selected-flight"></span></p>
+        <!-- Payment Form -->
         <form id="paymentForm" onsubmit="confirmBooking(event)">
             <div class="form-group">
                 <label for="cardNumber">Card Number</label>
@@ -247,35 +258,42 @@
         </div>
     </div>
 
+    <!-- Footer Section -->
     <footer>
         <p>&copy; 2024 MITA Airlines | All rights reserved</p>
     </footer>
 
+    <!-- JavaScript Functionality -->
     <script>
-        // Function to retrieve query parameters from the URL
+        /**
+         * Function to retrieve query parameters from the URL
+         * @param {string} param - The name of the query parameter to retrieve.
+         * @returns {string|null} - The value of the query parameter, or null if it doesn't exist.
+         */
         function getQueryParam(param) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param);
         }
 
-        // Display the selected flight on the payment page
-        document.getElementById("selected-flight").textContent = getQueryParam("flight") || "Not selected";
-
-        // Show modal with booking confirmation
+        /**
+         * Function to confirm the booking when the payment form is submitted.
+         * This function validates the card information and shows the booking confirmation modal.
+         * @param {Event} event - The form submission event.
+         */
         function confirmBooking(event) {
             event.preventDefault(); // Prevent form from submitting normally
 
-            // Get the flight information
+            // Get the flight information from the URL
             const selectedFlight = getQueryParam("flight") || "Not selected";
 
-            //  card number length
+            // Get the card number value and validate its length
             const cardNumber = document.getElementById("cardNumber").value;
             if (cardNumber.length !== 16) {
                 alert("Card number must be exactly 16 digits.");
                 return;
             }
 
-            //  expiry date 
+            // Validate expiry date
             const expiryDate = document.getElementById("expiryDate").value;
             if (!expiryDate) {
                 alert("Please select a valid expiry date.");
@@ -287,18 +305,26 @@
             document.getElementById("bookingModal").style.display = "block";
         }
 
-        // Close the modal when clicked close button
+        /**
+         * Function to close the booking confirmation modal.
+         */
         function closeModal() {
             document.getElementById("bookingModal").style.display = "none";
         }
 
-        // Close the modal when clicked outside of the modal
+        /**
+         * Function to close the modal if the user clicks outside the modal window.
+         * @param {Event} event - The mouse click event.
+         */
         window.onclick = function (event) {
             const modal = document.getElementById("bookingModal");
             if (event.target === modal) {
                 modal.style.display = "none";
             }
         }
+
+        // Display the selected flight on the payment page
+        document.getElementById("selected-flight").textContent = getQueryParam("flight") || "Not selected";
     </script>
 </body>
 
