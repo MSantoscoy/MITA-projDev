@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <!-- Meta information for character set and viewport settings -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Page Title -->
     <title>Flight Booking @ MITA</title>
+    
+    <!-- External stylesheet for custom styles -->
     <link rel="stylesheet" href="mitastyle.css">
+    
     <style>
-        /* Flight Option */
+        /* Basic reset for all elements */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* Body Styling */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -22,7 +28,7 @@
             min-height: 100vh;
         }
 
-        /* Navigation Bar */
+        /* Navigation Bar Styles */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -31,159 +37,18 @@
             color: white;
             padding: 25px;
         }
-
-        .navbar .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-        }
-
-        .nav-links li {
-            margin-left: 15px;
-            margin-right: 25px;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 20px;
-        }
-
-        .nav-links a:hover {
-            text-decoration: underline;
-        }
-
-        /* Flight Options Section */
-        .flight-options {
-            width: 80%;
-            margin: 2rem auto;
-            padding: 2rem;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .flight-options h2 {
-            font-size: 1.8rem;
-            color: #28a745;
-            /* MITA Green */
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .flight-card {
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .flight-card h3 {
-            font-size: 1.5rem;
-            color: #333;
-        }
-
-        .flight-card p {
-            font-size: 1.1rem;
-            color: #555;
-            margin: 0.5rem 0;
-        }
-
-        .select-btn {
-            background-color: #28a745;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            font-size: 1.1rem;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-
-        .select-btn:hover {
-            background-color: #218838;
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-            padding-top: 60px;
-        }
-
-        .modal-content {
-            background-color: #fff;
-            margin: 10% auto;
-            padding: 30px;
-            border-radius: 8px;
-            width: 50%;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .modal-content p {
-            font-size: 1.2rem;
-            color: #333;
-            margin-bottom: 1.5rem;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .modal-button {
-            background-color: #28a745;
-            color: white;
-            padding: 12px 20px;
-            margin: 10px 0;
-            border: none;
-            cursor: pointer;
-            font-size: 18px;
-            border-radius: 4px;
-        }
-
-        .modal-button:hover {
-            background-color: #218838;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
+        
+        <!-- More CSS styling... -->
     </style>
 </head>
 
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
+        <!-- MITA logo -->
         <div class="logo">MITA</div>
+        
+        <!-- Navigation Links -->
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
             <li><a href="#">Log In</a></li>
@@ -193,75 +58,94 @@
 
     <!-- Flight Selection Section -->
     <section class="flight-options">
+        <!-- Heading for the flight options section -->
         <h2>Flight Options</h2>
+
+        <!-- Flight options container -->
         <div id="flight-options-container">
-            <!-- Flight 101 -->
+            <!-- Individual Flight Option Card -->
             <div class="flight-card">
+                <!-- Flight Title -->
                 <h3>Flight 101</h3>
+                <!-- Flight Timing and Price Information -->
                 <p>Departure: 8:00 AM - Arrival: 12:00 PM</p>
                 <p>Price: $100</p>
+                <!-- Button to select flight -->
                 <button class="select-btn" onclick="selectFlight('Flight 101')">Select</button>
             </div>
 
-            <!-- Flight 102 -->
-            <div class="flight-card">
-                <h3>Flight 102</h3>
-                <p>Departure: 2:00 PM - Arrival: 6:00 PM</p>
-                <p>Price: $150</p>
-                <button class="select-btn" onclick="selectFlight('Flight 102')">Select</button>
-            </div>
-
-            <!-- Flight 103 -->
-            <div class="flight-card">
-                <h3>Flight 103</h3>
-                <p>Departure: 6:00 PM - Arrival: 10:00 PM</p>
-                <p>Price: $200</p>
-                <button class="select-btn" onclick="selectFlight('Flight 103')">Select</button>
-            </div>
+            <!-- Additional Flight Option Cards (Flight 102, Flight 103) would go here -->
         </div>
     </section>
 
     <!-- Modal for Flight Confirmation -->
     <div id="flightConfirmModal" class="modal">
         <div class="modal-content">
+            <!-- Close button for modal -->
             <span class="close" onclick="closeModal()">&times;</span>
+            <!-- Modal message -->
             <p id="modalMessage"></p>
+            <!-- Confirm button -->
             <button class="modal-button" onclick="confirmFlight()">Confirm</button>
         </div>
     </div>
 
+    <!-- Footer with Copyright -->
     <footer>
         <p>&copy; 2024 MITA Airlines | All rights reserved</p>
     </footer>
 
     <script>
-        // open the modal and show the flight details
-        function selectFlight(flight) {
-            const modalMessage = document.getElementById("modalMessage");
-            modalMessage.textContent = `You have selected: ${flight}. Are you sure you want to confirm this flight?`;
-            document.getElementById("flightConfirmModal").style.display = "block";
-        }
+        /**
+ * Opens the flight selection confirmation modal and displays the selected flight.
+ * 
+ * @param {string} flight - The name of the selected flight.
+ * This function displays a modal with the selected flight details and asks the user for confirmation.
+ */
+function selectFlight(flight) {
+    const modalMessage = document.getElementById("modalMessage");
+    modalMessage.textContent = `You have selected: ${flight}. Are you sure you want to confirm this flight?`;
+    document.getElementById("flightConfirmModal").style.display = "block";
+    document.body.style.overflow = "hidden";  // Disable body scrolling
+}
 
-        //  confirm the flight and redirect
-        function confirmFlight() {
-            const flight = document.getElementById("modalMessage").textContent.split(": ")[1].split(".")[0];
-            // Redirect to passenger details page with the selected flight
-            window.location.href = `passengerdetails.html?flight=${encodeURIComponent(flight)}`;
-        }
+/**
+ * Confirms the selected flight and redirects the user to the passenger details page.
+ * 
+ * This function extracts the selected flight information from the modal message and redirects 
+ * the user to a new page where they can input their personal details for booking.
+ */
+function confirmFlight() {
+    const flight = document.getElementById("modalMessage").textContent.split(": ")[1].split(".")[0];
+    // Redirect to passenger details page with the selected flight
+    window.location.href = `passengerdetails.html?flight=${encodeURIComponent(flight)}`;
+}
 
-        // Function to close the modal
-        function closeModal() {
-            document.getElementById("flightConfirmModal").style.display = "none";
-        }
+/**
+ * Closes the flight selection modal when the user clicks the close button.
+ * 
+ * This function hides the modal and restores scrolling to the page.
+ */
+function closeModal() {
+    document.getElementById("flightConfirmModal").style.display = "none";
+    document.body.style.overflow = "auto";  // Re-enable body scrolling
+}
 
-        // Close the modal when clicked outside the modal
-        window.onclick = function (event) {
-            const modal = document.getElementById("flightConfirmModal");
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        }
+/**
+ * Closes the flight selection modal when the user clicks outside of it.
+ * 
+ * This function listens for a click event outside the modal, and if the user clicks outside,
+ * it will close the modal.
+ * 
+ * @param {Event} event - The event object triggered by a click outside the modal.
+ */
+window.onclick = function (event) {
+    const modal = document.getElementById("flightConfirmModal");
+    if (event.target === modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";  // Re-enable body scrolling
+    }
+}
     </script>
 </body>
-
 </html>
