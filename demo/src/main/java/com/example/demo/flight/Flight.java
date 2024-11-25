@@ -49,8 +49,6 @@ public class Flight {
     @JoinColumn(name = "airport_id", insertable = false, updatable = false)
     private Airport departure;
 
-    private Airport departure;
-
     /**
      * The time of departure for the flight.
      */

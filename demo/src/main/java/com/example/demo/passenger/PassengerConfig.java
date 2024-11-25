@@ -4,6 +4,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.List;
+
 /**
  * Class name: PassengerConfig
  * @since 2024-11 20
