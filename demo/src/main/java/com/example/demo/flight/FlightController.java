@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "api/v1/flight")
+@RequestMapping(path = "api/v1/airport")
 public class FlightController {
 
     private final FlightService flightService;

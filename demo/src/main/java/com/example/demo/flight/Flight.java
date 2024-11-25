@@ -27,9 +27,6 @@ public class Flight {
     @ManyToOne(fetch = FetchType.LAZY)  // Use LAZY loading for better performance in most cases
     @JoinColumn(name = "airport_id")    // Specifies the foreign key column in the Flight table
     private Airport destination;  // Reference (pointer) to the Airport class
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "airport_id", insertable = false, updatable = false)
     private Airport departure;
 
     private LocalTime departTime;
