@@ -29,7 +29,7 @@ public class FlightConfig {
      * @return A {@link CommandLineRunner} that is executed during application startup.
      */
     @Bean
-    CommandLineRunner commandLineRunner(FlightRepository repository){
+    CommandLineRunner flightCommandLineRunner(FlightRepository repository){
         return args -> {
             // No implementation is currently provided
         };

@@ -1,10 +1,10 @@
 package com.example.demo.airport;
 
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.List;
 
 /**
  * Class name: Airport Config
@@ -32,7 +32,7 @@ public class AirportConfig {
      * @return A {@link CommandLineRunner} that executes the data population task.
      */
     @Bean
-    CommandLineRunner commandLineRunner(AirportRepository repository) {
+    CommandLineRunner airportCommandLineRunner(AirportRepository repository) {
         return args -> {
             // Create predefined airports and save them to the repository
             Airport LAX = new Airport(1, "Los Angeles International Airport", "LAX", "Los Angeles, California", -8);

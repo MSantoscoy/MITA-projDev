@@ -185,41 +185,60 @@
     <nav class="navbar">
         <div class="logo">MITA</div>
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Log In</a></li>
+            <li><a href="mitaindex.html" class="home-link">Home</a></li>
+            <li><a href="signup.html">Log In / Sign Up</a></li>
             <li><a href="#">Contact Us</a></li>
         </ul>
     </nav>
+
 
     <!-- Flight Selection Section -->
     <section class="flight-options">
         <h2>Flight Options</h2>
         <div id="flight-options-container">
-            <!-- Flight 101 -->
+            <!-- Flight 111 -->
             <div class="flight-card">
-                <h3>Flight 101 </h3>
+                <h3>Spirit111 </h3>
                 <p>LAX - JFK</p>
                 <p>Departure: 8:00 AM - Arrival: 12:00 PM</p>
-                <p>Price: $100</p>
-                <button class="select-btn" onclick="selectFlight('Flight 101')">Select</button>
+                <p>Price: $90</p>
+                <button class="select-btn" onclick="selectFlight('Spirit111')">Select</button>
             </div>
 
             <!-- Flight 102 -->
             <div class="flight-card">
-                <h3>Flight 102</h3>
+                <h3>AmericanAir101</h3>
                 <p>LAX - JFK</p>
                 <p>Departure: 2:00 PM - Arrival: 6:00 PM</p>
                 <p>Price: $150</p>
-                <button class="select-btn" onclick="selectFlight('Flight 102')">Select</button>
+                <button class="select-btn" onclick="selectFlight('AmericanAir101')">Select</button>
             </div>
 
             <!-- Flight 103 -->
             <div class="flight-card">
-                <h3>Flight 103</h3>
+                <h3>Southwest403</h3>
                 <p>LAX - JFK</p>
                 <p>Departure: 6:00 PM - Arrival: 10:00 PM</p>
                 <p>Price: $200</p>
-                <button class="select-btn" onclick="selectFlight('Flight 103')">Select</button>
+                <button class="select-btn" onclick="selectFlight('Southwest403')">Select</button>
+            </div>
+
+            <!-- Flight 104 -->
+            <div class="flight-card">
+                <h3>Delta312</h3>
+                <p>LAX - JFK</p>
+                <p>Departure: 6:00 PM - Arrival: 10:00 PM</p>
+                <p>Price: $135</p>
+                <button class="select-btn" onclick="selectFlight('Delta112')">Select</button>
+            </div>
+
+            <!-- Flight 105 -->
+            <div class="flight-card">
+                <h3>Frontier210</h3>
+                <p>LAX - JFK</p>
+                <p>Departure: 6:00 PM - Arrival: 10:00 PM</p>
+                <p>Price: $135</p>
+                <button class="select-btn" onclick="selectFlight('Frontier210')">Select</button>
             </div>
         </div>
     </section>
@@ -245,12 +264,13 @@
             document.getElementById("flightConfirmModal").style.display = "block";
         }
 
-        //  confirm the flight and redirect
+        // confirm the flight and redirect
         function confirmFlight() {
             const flight = document.getElementById("modalMessage").textContent.split(": ")[1].split(".")[0];
-            // Redirect to passenger details page with the selected flight
+            // Redirect to the passenger details page
             window.location.href = `passengerdetails.html?flight=${encodeURIComponent(flight)}`;
         }
+
 
         // Function to close the modal
         function closeModal() {

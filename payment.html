@@ -209,11 +209,12 @@
     <nav class="navbar">
         <div class="logo">MITA</div>
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Log In</a></li>
+            <li><a href="mitaindex.html" class="home-link">Home</a></li>
+            <li><a href="signup.html">Log In / Sign Up</a></li>
             <li><a href="#">Contact Us</a></li>
         </ul>
     </nav>
+
 
     <!-- PAYMENT SECTION -->
     <section class="payment-form">
@@ -259,7 +260,7 @@
         }
 
         // Display the selected flight on the payment page
-        document.getElementById("selected-flight").textContent = getQueryParam("flight") || "Not selected";
+        document.getElementById("selected-flight").textContent = getQueryParam("flight");
 
         // Show modal with booking confirmation
         function confirmBooking(event) {
@@ -297,8 +298,17 @@
             const modal = document.getElementById("bookingModal");
             if (event.target === modal) {
                 modal.style.display = "none";
-            }
+            } document.getElementById("paymentForm").addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                alert("Payment successful! Your booking is confirmed.");
+                // Redirect to a confirmation page or user profile
+                window.location.href = "user.html";
+            });
+
         }
+
+
     </script>
 </body>
 
